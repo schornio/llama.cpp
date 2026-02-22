@@ -21,6 +21,10 @@ hidden_imports = (
     + [
         'torch',
         'numpy',
+        # Ensure the resource_tracker helper process is bundled so that the
+        # multiprocessing module can relaunch it inside the frozen executable.
+        'multiprocessing.resource_tracker',
+        'multiprocessing.spawn',
     ]
 )
 
@@ -45,7 +49,7 @@ a = Analysis(
     hiddenimports=hidden_imports,
     hookspath=[],
     hooksconfig={},
-    runtime_hooks=[],
+    runtime_hooks=['pyinstaller_hooks/rthook_multiprocessing.py'],
     excludes=[],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
