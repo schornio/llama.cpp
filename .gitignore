@@ -103,6 +103,9 @@ __pycache__/
 */poetry.lock
 poetry.toml
 
+# PyInstaller build artifacts
+/dist/
+
 # Nix
 /result
 
